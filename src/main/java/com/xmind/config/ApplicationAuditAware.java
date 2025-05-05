@@ -1,7 +1,7 @@
 package com.xmind.config;
 
-import com.example.mobiversite.security.entity.UserEntity;
-import com.example.mobiversite.utils.AuthUtils;
+import com.xmind.security.entity.UserEntity;
+import com.xmind.utils.AuthUtils;
 import java.util.Optional;
 import org.springframework.data.domain.AuditorAware;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
