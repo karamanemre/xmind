@@ -82,4 +82,40 @@
                 constraintName="fk_token_user"/>
     </changeSet>
 
+    <changeSet id="05_05_2025_create_demands_table" author="karamanemre">
+        <createTable tableName="demands">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="title" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="TEXT"/>
+            <column name="category" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="status" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_id" type="BIGINT">
+                <constraints nullable="false" foreignKeyName="fk_demands_user" references="users(id)"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="05_05_2025_create_demand_answer_table" author="karamanemre">
+        <createTable tableName="demand_answer">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="answer_text" type="TEXT"/>
+            <column name="demand_id" type="BIGINT">
+                <constraints nullable="false" foreignKeyName="fk_demand_answer_demand" references="demands(id)"/>
+            </column>
+            <column name="user_id" type="BIGINT">
+                <constraints foreignKeyName="fk_demand_answer_user" references="users(id)"/>
+            </column>
+        </createTable>
+    </changeSet>
+
 </databaseChangeLog>
