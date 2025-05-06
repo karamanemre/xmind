@@ -1,8 +1,10 @@
 package com.xmind.controller;
 
+import com.xmind.models.dtos.demand.DemandRequest;
 import com.xmind.models.dtos.demand.DemandResponse;
 import com.xmind.models.dtos.demandAnswer.DemandAnswerRequest;
 import com.xmind.models.dtos.demandAnswer.DemandAnswerResponse;
+import com.xmind.models.enums.DemandStatus;
 import com.xmind.services.DemandAnswerService;
 import com.xmind.utils.AuthUtils;
 import java.util.List;

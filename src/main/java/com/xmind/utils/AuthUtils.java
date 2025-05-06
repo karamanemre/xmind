@@ -1,7 +1,9 @@
 package com.xmind.utils;
 
 import com.xmind.exception.AccessDeniedException;
+import com.xmind.exception.BadRequestException;
 import com.xmind.security.entity.UserEntity;
+import com.xmind.security.models.Roles;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -30,9 +32,17 @@ public class AuthUtils {
     public static Long getCurrentUserId() {
         UserEntity user = getCurrentUser();
         if (user == null) {
-            return null;
+            throw null;
         }
         return user.getId();
+    }
+
+    public static Boolean isAdmin() {
+        UserEntity user = getCurrentUser();
+        if (user == null) {
+            throw new BadRequestException("Current user can not parsed");
+        }
+        return user.getRoles().contains(Roles.ADMIN);
     }
 
     public static UserEntity getCurrentUser() {

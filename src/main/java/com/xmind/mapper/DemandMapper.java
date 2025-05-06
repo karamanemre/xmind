@@ -1,5 +1,6 @@
 package com.xmind.mapper;
 
+import com.xmind.elasticsearch.document.DemandDocument;
 import com.xmind.entity.DemandEntity;
 import com.xmind.models.dtos.demand.DemandAdminResponse;
 import com.xmind.models.dtos.demand.DemandRequest;
@@ -9,9 +10,11 @@ import com.xmind.models.enums.DemandStatus;
 import com.xmind.security.entity.UserEntity;
 import java.util.List;
 import java.util.stream.Collectors;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
 public class DemandMapper {
 
     public List<DemandResponse> toDto(List<DemandEntity> demand) {
@@ -35,6 +38,17 @@ public class DemandMapper {
                 .category(demand.getCategory())
                 .status(demand.getStatus())
                 .createdDate(demand.getCreatedDate())
+                .build();
+    }
+
+    public DemandDocument toDocument(DemandEntity demand) {
+        return DemandDocument.builder()
+                .userId(demand.getUser().getId())
+                .entityId(demand.getId())
+                .category(demand.getCategory())
+                .title(demand.getTitle())
+                .createdDate(demand.getCreatedDate())
+                .description(demand.getDescription())
                 .build();
     }
 

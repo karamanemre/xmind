@@ -25,4 +25,8 @@ public class NotificationService {
     public void sendSms() {
         sms.send();
     }
+
+    public void notifyAdmin(String msg) {
+        // test
+    }
 }

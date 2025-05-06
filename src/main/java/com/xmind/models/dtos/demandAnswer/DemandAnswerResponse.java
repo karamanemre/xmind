@@ -1,5 +1,6 @@
 package com.xmind.models.dtos.demandAnswer;
 
+import com.xmind.entity.Model;
 import java.util.Date;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -12,7 +13,7 @@ import lombok.Setter;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class DemandAnswerResponse {
+public class DemandAnswerResponse implements Model {
     private Long id;
     private Long demandId;
     private String answerText;
