@@ -1,5 +1,7 @@
 package com.xmind.controller;
 
+import com.xmind.models.dtos.CommonEnumResponse;
+import com.xmind.models.dtos.demand.DemandAdminResponse;
 import com.xmind.models.dtos.demand.DemandRequest;
 import com.xmind.models.dtos.demand.DemandResponse;
 import com.xmind.models.enums.DemandStatus;
@@ -10,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -54,7 +57,19 @@ public class DemandController {
     @GetMapping
     @PreAuthorize(value = "hasAnyAuthority('USER')")
     public List<DemandResponse> getAll(@PageableDefault(sort = {"createdDate"}, page = 0, size = 10) Pageable pageable,
-                                       @RequestParam(required = false) DemandStatus demandStatus) {
-        return service.getAll(pageable, demandStatus);
+                                       @RequestParam(required = false) DemandStatus status) {
+        return service.getAll(pageable, status, AuthUtils.getCurrentUser());
+    }
+
+    @GetMapping("/all")
+    @PreAuthorize(value = "hasAnyAuthority('ADMIN')")
+    public List<DemandAdminResponse> getAllDemandsForAdmin(@PageableDefault(sort = {"createdDate"}, page = 0, size = 10) Pageable pageable,
+                                                           @RequestParam(required = false) DemandStatus status) {
+        return service.getAllDemandsForAdmin(pageable, status);
+    }
+
+    @GetMapping("/statuses")
+    public List<CommonEnumResponse> getStatuses() {
+        return service.getStatuses();
     }
 }

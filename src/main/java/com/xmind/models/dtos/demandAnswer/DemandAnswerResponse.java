@@ -1,5 +1,6 @@
 package com.xmind.models.dtos.demandAnswer;
 
+import java.util.Date;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -13,6 +14,7 @@ import lombok.Setter;
 @AllArgsConstructor
 public class DemandAnswerResponse {
     private Long id;
+    private Long demandId;
     private String answerText;
-    private Long userId;
+    private Date answeredDate;
 }

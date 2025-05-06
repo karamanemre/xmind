@@ -17,8 +17,5 @@ public class DemandRequest {
     private String description;
 
     @NotNull(message = "validation.notnull")
-    private DemandCategory category;
-
-    @NotNull(message = "validation.notnull")
-    private DemandStatus status;
+    private DemandCategory categoryKey;
 }

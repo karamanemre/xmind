@@ -1,6 +1,6 @@
 package com.xmind.services;
 
-import com.xmind.models.dtos.CategoryResponse;
+import com.xmind.models.dtos.CommonEnumResponse;
 import com.xmind.models.enums.CacheNames;
 import com.xmind.models.enums.DemandCategory;
 import java.util.List;
@@ -14,9 +14,9 @@ import org.springframework.stereotype.Service;
 public class CategoryService {
 
     @Cacheable(value = CacheNames.CATEGORIES, key = "#root.methodName")
-    public List<CategoryResponse> getAllCategories() {
+    public List<CommonEnumResponse> getAllCategories() {
         return Stream.of(DemandCategory.values())
-                .map(category -> CategoryResponse.builder()
+                .map(category -> CommonEnumResponse.builder()
                         .desc(TranslationService.translate("category." + category.name().toLowerCase(Locale.ENGLISH)))
                         .key(category.name())
                         .id(category.getCode())

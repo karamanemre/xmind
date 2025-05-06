@@ -1,6 +1,6 @@
 package com.xmind.controller;
 
-import com.xmind.models.dtos.CategoryResponse;
+import com.xmind.models.dtos.CommonEnumResponse;
 import com.xmind.services.CategoryService;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -16,7 +16,7 @@ public class CategoryController {
     private final CategoryService categoryService;
 
     @GetMapping
-    public List<CategoryResponse> getAllCategories() {
+    public List<CommonEnumResponse> getAllCategories() {
         return categoryService.getAllCategories();
     }
 }

@@ -3,6 +3,7 @@ package com.xmind.entity;
 import com.xmind.security.entity.UserEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -29,7 +30,7 @@ public class DemandAnswerEntity extends AuditingEntity {
     @Column(columnDefinition = "TEXT")
     private String answerText;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "demand_id", nullable = false)
     private DemandEntity demand;
 

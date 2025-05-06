@@ -15,12 +15,14 @@ import lombok.Setter;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class DemandResponse {
+public class DemandAdminResponse {
     private Long id;
     private String title;
     private String description;
     private DemandCategory category;
     private DemandStatus status;
     private DemandAnswerResponse answer;
-    protected Date createdDate;
+    private Date createdDate;
+    private String requesterMail;
+    private Long requesterId;
 }

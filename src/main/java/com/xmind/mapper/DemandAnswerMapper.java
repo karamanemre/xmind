@@ -15,7 +15,8 @@ public class DemandAnswerMapper {
     public DemandAnswerResponse toDto(DemandAnswerEntity demand) {
         return DemandAnswerResponse.builder()
                 .answerText(demand.getAnswerText())
-                .userId(demand.getUser().getId())
+                .demandId(demand.getDemand().getId())
+                .answeredDate(demand.getCreatedDate())
                 .id(demand.getId())
                 .build();
     }
